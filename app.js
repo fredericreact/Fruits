@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
+//PART 0 : Connect and create database
+
 mongoose.connect('mongodb://localhost:27017/fruitsDB',{useNewUrlParser:true});
+
+//PART 0.1 : create Schema (or collection or table)
 
 const fruitsSchema = new mongoose.Schema({
 name: {
