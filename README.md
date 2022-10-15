@@ -1,5 +1,92 @@
+# MongoDB
+
+### collection = table , document is a single record
+
+<br>  
+
+## 1.Access to MongoDB in the shell / command line
+
+```javascript
+mongod
+```
+
+```javascript
+mongo
+```
+## 2. Commands
+
+show all databses
+```javascript
+show dbs
+```
+create databse
+```javascript
+use shopDB
+```
+show the curent databse you are
+```javascript
+db
+```
+insert
+```javascript
+db.products.insertOne({_id: 1, name: "Pen, price: 1.2})
+```
+show collections currently exist in the current database
+```javascript
+show collections
+```
+READ : retrieve all the documents hat are inside collection
+```javascript
+db.products.find()
+```
+query with conditions
+```javascript
+db.products.find({name: "Pencil"})
+```
+
+```javascript
+db.products.find({price: {$gt:1}})
+```
+query return only specific fields
+```javascript
+db.products.find({_id: 1}, {name: 1, _id: 0})
+```
+Update
+```javascript
+db.products.updateOne({_id: 1}, {$set: {stock:32}})
+```
+Delete
+```javascript
+db.products.deleteOne({_id: 2})
+```
+Relationship between product document and reviews documents : one to many relationship
+```javascript
+db.products.insert({
+_id:2, 
+name: ""Pencil"", 
+price: 1.3, 
+stock: 43, 
+review : [ 
+{ authorName: ""Sally"", rating: 5, review: ""Best rubber ever"" }, 
+{ authorName: ""John"", rating: 5, review: ""awesome"" } 
+] } )
+```
+delete a databse
+```javascript
+use shopDB
+```
+then
+```javascript
+db.dropDatabase()
+```
+Delete collection
+```javascript
+db.products.drop()
+```
+
+
 # Mongoose
-# Setup mongoose
+## 1. Setup mongoose
 ```javascript
 npm install mongoose
 ```
@@ -11,6 +98,8 @@ const mongoose = require('mongoose');
 ```javascript
 mongoose.connect('mongodb://localhost:27017/fruitsDB',{useNewUrlParser:true});
 ```
+## 2.Commands
+
 Create a collection or table
 ```javascript
 const fruitsSchema = new mongoose.Schema({
@@ -114,7 +203,7 @@ Fruit.deleteMany({name: "apple"}, function(err){
   }
 })
 ```
-# create relationships
+## create relationships
 
 ```javascript
 const personSchema = new mongoose.Schema({
